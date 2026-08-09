@@ -6,69 +6,67 @@ export default function Experience() {
   const experiences = [
     {
       role: "Full Stack Engineer",
-      company: "Tata Technologies (Subcontractor Airbus)",
-      duration: "Feb 2024 – Present",
+      company: "Tata Technologies, subcontractor for Airbus",
+      duration: "Feb 2024 - Present",
       points: [
-        "Built scalable frontend systems using React.js and Vue.js, delivering interactive UI for complex engineering workflows.",
-        "Designed and implemented secure backend services using Node.js, Express, and GraphQL, handling mission-critical aircraft design data.",
-        "Engineered real-time dashboards visualizing 2M+ financial data points across 100+ projects and 150+ users using Redux and ApexCharts.",
-        "Built Python FastAPI services for computational logic and integrated MongoDB for persistent data storage.",
-        "Deployed production systems on AWS (EC2, S3, CloudFront) with load balancing, auto-scaling, and secure infrastructure.",
-        "Implemented CI/CD pipelines using GitHub Actions and GitLab CI for automated build, test, and deployment.",
+        "Built scalable frontend systems using React.js and Vue.js for complex engineering workflows.",
+        "Designed secure backend services using Node.js, Express, and GraphQL for aircraft design data.",
+        "Engineered dashboards visualizing 2M+ financial data points across 100+ projects and 150+ users.",
+        "Built Python FastAPI services and integrated MongoDB for persistent storage.",
+        "Deployed production systems on AWS with EC2, S3, CloudFront, load balancing, and auto-scaling.",
+        "Implemented CI/CD pipelines using GitHub Actions and GitLab CI.",
       ],
     },
     {
       role: "Software Development Engineer",
       company: "GeekyAnts",
-      duration: "July 2023 – Feb 2024",
+      duration: "July 2023 - Feb 2024",
       points: [
-        "Developed a user-facing dashboard and company website using React, improving data organization and usability.",
-        "Worked with Redux, Firebase, SQL, TypeScript, Tailwind CSS, and Next.js in internal projects.",
+        "Developed user-facing dashboards and company website features using React and Next.js.",
+        "Worked with Redux, Firebase, SQL, TypeScript, Tailwind CSS, and internal product tooling.",
       ],
     },
   ];
 
   return (
-    <section id="experience" className="py-20 bg-white dark:bg-gray-900">
-      <div className="max-w-6xl mx-auto px-6">
-        {/* Heading */}
-        <h2 className="text-3xl sm:text-4xl font-extrabold mb-12 text-center text-brand">
-          Experience
-        </h2>
+    <section id="experience" className="bg-white py-20">
+      <div className="mx-auto max-w-6xl px-5">
+        <div className="mb-10 max-w-2xl">
+          <p className="text-sm font-semibold uppercase tracking-[0.22em] text-brand">
+            Experience
+          </p>
+          <h2 className="mt-3 text-3xl font-bold text-slate-950 sm:text-4xl">
+            Building reliable products across frontend, backend, and cloud.
+          </h2>
+        </div>
 
-        {/* Timeline */}
-        <div className="relative border-l border-gray-300 dark:border-gray-700">
+        <div className="space-y-6">
           {experiences.map((exp, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, x: -40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.2 }}
-              className="mb-12 ml-6"
+            <motion.article
+              key={exp.company}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.45, delay: index * 0.08 }}
+              className="rounded-lg border border-slate-200 bg-slate-50 p-6"
             >
-              {/* Dot */}
-              <span className="absolute -left-3 flex h-5 w-5 items-center justify-center rounded-full bg-brand" />
-
-              {/* Content (NO CARD) */}
-              <div>
-                <h3 className="text-lg font-semibold">{exp.role}</h3>
-
-                <p className="text-sm text-brand font-medium">
-                  {exp.company}
-                </p>
-
-                <p className="text-xs text-gray-500 mb-3">
-                  {exp.duration}
-                </p>
-
-                {/* Bullet Points */}
-                <ul className="list-disc pl-5 space-y-1 text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
-                  {exp.points.map((point, i) => (
-                    <li key={i}>{point}</li>
-                  ))}
-                </ul>
+              <div className="flex flex-col gap-2 border-b border-slate-200 pb-5 sm:flex-row sm:items-start sm:justify-between">
+                <div>
+                  <h3 className="text-xl font-bold text-slate-950">{exp.role}</h3>
+                  <p className="mt-1 text-sm font-medium text-brand">{exp.company}</p>
+                </div>
+                <p className="text-sm text-slate-500">{exp.duration}</p>
               </div>
-            </motion.div>
+
+              <ul className="mt-5 grid gap-3 text-sm leading-6 text-slate-600 md:grid-cols-2">
+                {exp.points.map((point) => (
+                  <li key={point} className="flex gap-2">
+                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-brand" />
+                    <span>{point}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.article>
           ))}
         </div>
       </div>

@@ -1,83 +1,101 @@
 "use client";
+
 import { motion } from "framer-motion";
 import { JSX } from "react";
 import Image from "next/image";
+import { ArrowRight, Github, Linkedin, Mail } from "lucide-react";
 
 export default function Hero(): JSX.Element {
   return (
-    <section className="min-h-screen flex flex-col justify-center items-center text-text font-sans relative overflow-hidden">
-      {/* Subtle gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-brand/10 via-transparent to-transparent -z-10" />
-
-      {/* Profile image */}
-      <motion.div
-        initial={{ scale: 0.85, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-        className="w-48 h-48 relative overflow-hidden rounded-full shadow-md border-2 border-brand/40"
-      >
-        <Image
-          src="/portfolioimage.jpeg"
-          alt="My portrait"
-          fill
-          className="object-cover"
-          priority
-        />
-      </motion.div>
-
-      {/* Name / Title */}
-      <motion.h3
-        initial={{ opacity: 0, y: -30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="text-3xl sm:text-4xl font-extrabold text-center mt-6"
-      >
-        Hi, I’m <span className="text-brand">Shriya</span> 👋
-      </motion.h3>
-
-      {/* Subtitle */}
-      <motion.h4
-        className="text-lg sm:text-xl font-semibold text-gray-700 dark:text-gray-300 text-center mt-2"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.2, duration: 0.8 }}
-      >
-        Software Engineer
-      </motion.h4>
-
-      {/* Tagline */}
-      <motion.p
-        className="mt-4 text-sm sm:text-base text-center max-w-xl text-gray-600 dark:text-gray-400 leading-relaxed"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.4, duration: 0.8 }}
-      >
-        I’m a Full-Stack Engineer with 2+ years of experience working across aerospace and SaaS domains. I enjoy turning complex problems into clean, efficient, and user-friendly solutions.
-      </motion.p>
-
-      {/* Buttons */}
-      <motion.div
-        className="mt-6 flex gap-3"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.6, duration: 0.8 }}
-      >
-        <a
-          href="https://www.linkedin.com/in/shriya-sonam-a509571a1/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="px-6 py-2.5 text-sm bg-brand text-white font-medium rounded-md shadow-sm hover:shadow-md transition"
+    <section className="relative overflow-hidden bg-slate-50">
+      <div className="mx-auto grid min-h-[calc(100vh-4rem)] max-w-6xl items-center gap-12 px-5 py-20 lg:grid-cols-[1.1fr_0.9fr]">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="max-w-3xl"
         >
-          Say Hello
-        </a>
+          <p className="mb-4 text-sm font-semibold uppercase tracking-[0.22em] text-brand">
+            Full-Stack Software Engineer
+          </p>
+          <h1 className="text-5xl font-bold leading-tight text-slate-950 sm:text-6xl">
+            Building clean web apps, dashboards, and AI-powered tools.
+          </h1>
+          <p className="mt-6 max-w-2xl text-base leading-8 text-slate-600 sm:text-lg">
+            I am Shriya Sonam, a full-stack engineer with 2+ years of experience
+            across aerospace and SaaS domains. I work with React, Next.js,
+            FastAPI, Node.js, cloud infrastructure, and applied AI systems.
+          </p>
 
-        <a
-          href="#projects"
-          className="px-6 py-2.5 text-sm border border-brand text-brand font-medium rounded-md hover:bg-brand hover:text-white transition"
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <a
+              href="#projects"
+              className="inline-flex items-center justify-center gap-2 rounded-md bg-accent px-5 py-3 text-sm font-semibold text-white transition hover:bg-slate-700"
+            >
+              View Projects <ArrowRight size={16} />
+            </a>
+            <a
+              href="#contact"
+              className="inline-flex items-center justify-center rounded-md border border-slate-300 px-5 py-3 text-sm font-semibold text-slate-800 transition hover:border-slate-500 hover:bg-white"
+            >
+              Contact Me
+            </a>
+          </div>
+
+          <div className="mt-8 flex items-center gap-4 text-slate-500">
+            <a
+              href="mailto:shriya2025sonam@gmail.com"
+              aria-label="Email Shriya"
+              className="transition hover:text-slate-950"
+            >
+              <Mail size={20} />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/shriya-sonam-a509571a1/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn profile"
+              className="transition hover:text-slate-950"
+            >
+              <Linkedin size={20} />
+            </a>
+            <a
+              href="https://github.com/Shriya-Sonam"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub profile"
+              className="transition hover:text-slate-950"
+            >
+              <Github size={20} />
+            </a>
+          </div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, scale: 0.96 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.7, delay: 0.1 }}
+          className="relative mx-auto w-full max-w-sm"
         >
-          View Work
-        </a>
-      </motion.div>
+          <div className="relative aspect-[4/5] overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm">
+            <Image
+              src="/portfolioimage.jpeg"
+              alt="Portrait of Shriya Sonam"
+              fill
+              className="object-cover"
+              priority
+            />
+          </div>
+          <div className="absolute -bottom-5 left-5 right-5 rounded-md border border-slate-200 bg-white p-4 shadow-sm">
+            <p className="text-sm font-semibold text-slate-950">
+              Current focus
+            </p>
+            <p className="mt-1 text-sm text-slate-600">
+              AI support automation, scalable dashboards, and cloud-ready web apps.
+            </p>
+          </div>
+        </motion.div>
+      </div>
     </section>
   );
 }
